@@ -1,0 +1,43 @@
+Cipher is a password manager and a text encryption tool. It has the ability to manipulate characters and convert them to any other characters
+a cipher can parse and manipulate words, sentences, paragraphs, and any form of text; ciphering it into unreadable text.
+
+it all begins with a cipher:
+*a cipher is a modification to the original text, 
+*a cipher can modify one to many or no characters at all
+
+next comes cipher text:
+*building a cipher does the following:
+    *reads the original text and parses it with the cipher
+    *compiles the cipher creating a unique cipher text
+    *create a decipher key to restore the cipher to original text
+    *provide cipher text and a cipher key
+*the cipher key can reveal or restore its cipher text into the original text
+
+
+cipher keys are programmable:
+*cipher keys support custom execution scripting in java to allow a cipher to dictate its own execution protocol
+
+
+
+Password management:
+password manager will keep track of your passwords and manage them.
+password manager will maintain any given password protocol and provide administrative tools
+
+password types:
+*goal indicators
+*constant reminders
+*motivation quotes
+*muscle memory
+*cipher
+
+password complexity:
+*none
+*max
+
+
+
+lexicon:
+lexicon is a database of unique terms. it is a term management service that provides and index and a list.
+
+*every term can have a description.
+*terms can have hashtags 
