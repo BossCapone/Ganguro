@@ -11,63 +11,41 @@ import java.util.Scanner;
  *
  * @author Eric
  */
-public class CaesarCipher {
-
+public class CaesarCipher implements Cipher {
     int shiftKey = 0;
-    String originalTxt;
-    String cipherTxt;
 
     public CaesarCipher() {
-        shiftKey = 3;
+        shiftKey = (int) (Math.random() * 100);
     }
 
     public CaesarCipher(int key) {
         shiftKey = key;
     }
 
-    public CaesarCipher(int key, String msg) {
-        shiftKey = key;
-        originalTxt = msg;
+    @Override
+    public String getKey() {
+        return String.valueOf(shiftKey);
     }
 
-    public int getKey() {
-        return shiftKey;
+    @Override
+    public void setKey(String k) {
+        shiftKey = Integer.parseInt(k);
     }
 
-    public void setKey(int k) {
-        shiftKey = k;
-    }
-
-    public void setOriginalText(String txt) {
-        originalTxt = txt;
-    }
-
-    public String Encode() {
-        // Enode the ciphers original text using the given key
-        // The cipher text will also be stored within the cipher
-        String convertedTxt = "";
-        for (int i = 0; i < originalTxt.length(); i++) {
-            char letter = originalTxt.charAt(i);
-            convertedTxt += shift(letter, shiftKey);
-        }
-        cipherTxt = convertedTxt;
-        return cipherTxt;
-    }
-
-    public String Encode(String txt) {
-        // Encode the ciphers given text using a random key
+    @Override
+    public String Encrypt(String txt) {
+        // Encrypt the ciphers given text using the stored key
         // The cipher text will be returned with the key attached.
         String convertedTxt = "";
-        int tmpKey = (int) (Math.random() * 100);
         for (int i = 0; i < txt.length(); i++) {
             char letter = txt.charAt(i);
-            convertedTxt += shift(letter, tmpKey);
+            convertedTxt += shift(letter, shiftKey);
         }
-        return convertedTxt + " key:" + tmpKey;
+        return convertedTxt;
     }
 
-    public String Encode(String txt, int key) {
-        // Encode the ciphers given text using a random key
+    public String Encrypt(String txt, int key) {
+        // Encrypt the ciphers given text using a random key
         // The cipher text will be returned with the key attached.
         String convertedTxt = "";
         for (int i = 0; i < txt.length(); i++) {
@@ -77,18 +55,19 @@ public class CaesarCipher {
         return convertedTxt;
     }
 
-    public String Decode() {
-        // Decode the stored ciphertext using the stored key
-        // retults are displayed not stored
+    @Override
+    public String Decrypt(String txt) {
+        // Decode the ciphertext using the stored key
+        // retults are displayed
         String convertedTxt = "";
-        for (int i = 0; i < cipherTxt.length(); i++) {
-            char letter = cipherTxt.charAt(i);
+        for (int i = 0; i < txt.length(); i++) {
+            char letter = txt.charAt(i);
             convertedTxt += shift(letter, -shiftKey);
         }
         return convertedTxt;
     }
 
-    public String Decode(String txt, int key) {
+    public String Decrypt(String txt, int key) {
         // Decode the given ciphertext using the given key
         // retults are displayed not stored
         String convertedTxt = "";

@@ -10,7 +10,9 @@ package Cipher;
  *
  * @author Eric
  */
-public class Cipher {
-    
-    
+public interface Cipher {
+    public String Encrypt(String msg);
+    public String Decrypt(String msg);
+    public String getKey();
+    public void setKey(String key);
 }
